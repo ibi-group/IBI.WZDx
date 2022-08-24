@@ -18,7 +18,7 @@ WZDx v4.0 and v4.1 are supported. The [WzdxSerializer](./src/IBI.WZDx/Serializat
 
 ### NuGet Package
 
-To use the library, you need to reference it in your .NET project. The easiest way to do this is to add the [IBI.WZDx NuGet package](https://www.nuget.org/packages/IBI.WZDx/) as a dependency to your project:
+To use the library, you need to reference it in your .NET project. The easiest way to do this is to add the [IBI.WZDx NuGet package](https://www.nuget.org/packages/IBI.WZDx/), available from [nuget.org](https://nuget.org), as a dependency to your project:
 
 ```shell
 dotnet add package IBI.WZDx
