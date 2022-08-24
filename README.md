@@ -12,13 +12,13 @@ The library provides the following functionality:
 - Create a WZDx [WorkZoneFeed](https://github.com/usdot-jpo-ode/wzdx/blob/main/spec-content/objects/WorkZoneFeed.md) or [DeviceFeed](https://github.com/usdot-jpo-ode/wzdx/blob/main/spec-content/objects/DeviceFeed.md) GeoJSON string by serializing WZDx C# objects modeled in this library.
 - Deserialize a WZDx Work Zone Feed or Device Feed GeoJSON string into C# objects modeled in this library.
 
-WZDx v4.0 and v4.1 are supported. The serializer defaults to outputting v4.1 (latest WZDx).
+WZDx v4.0 and v4.1 are supported. The [WzdxSerializer](./src/IBI.WZDx/Serialization/WzdxSerializer.cs) defaults to outputting v4.1 (latest WZDx).
 
 ## Usage
 
 ### NuGet Package
 
-To use the library, you need to reference it in your .NET project. The easiest way to do this is to add the [IBI.WZDx NuGet package](TODO) as a dependency to your project:
+To use the library, you need to reference it in your .NET project. The easiest way to do this is to add the [IBI.WZDx NuGet package](https://github.com/ibi-group/IBI.WZDx/packages/1611197) as a dependency to your project:
 
 ```shell
 dotnet add package IBI.WZDx
