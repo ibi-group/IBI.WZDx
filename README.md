@@ -18,7 +18,7 @@ WZDx v4.0 and v4.1 are supported. The [WzdxSerializer](./src/IBI.WZDx/Serializat
 
 ### NuGet Package
 
-To use the library, you need to reference it in your .NET project. The easiest way to do this is to add the [IBI.WZDx NuGet package](https://github.com/ibi-group/IBI.WZDx/packages/1611197) as a dependency to your project:
+To use the library, you need to reference it in your .NET project. The easiest way to do this is to add the [IBI.WZDx NuGet package](https://www.nuget.org/packages/IBI.WZDx/) as a dependency to your project:
 
 ```shell
 dotnet add package IBI.WZDx
@@ -51,7 +51,7 @@ using IBI.WZDx.Serialization;
 
 var httpClient = new HttpClient();
 
-HttpResponseMessage feedResponse = await httpClient.GetAsync("https://url.to.wzdx.feed/wzdx-device-feed").;
+HttpResponseMessage feedResponse = await httpClient.GetAsync("https://url.to.wzdx.feed/wzdx-device-feed");
 string wzdxDeviceFeedGeoJson = await feedResponse.Content.ReadAsStringAsync();
 
 DeviceFeed wzdxDeviceFeed = WzdxSerializer.DeserializeFeed<DeviceFeed>(wzdxDeviceFeedGeoJson);
