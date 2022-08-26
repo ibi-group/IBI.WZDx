@@ -28,4 +28,4 @@ jobs:
         if: ${{ github.ref == 'refs/heads/main' }}
         run: dotnet pack --configuration Release --no-build src/IBI.WZDx/IBI.WZDx.csproj
       - name: Push IBI.WZDx NuGet package to nuget.org
-        run: dotnet nuget push src/IBI.WZDx/bin/Release/*.nupkg --source https://api.nuget.org/v3/index.json --api-key ${{ secrets.NUGET_API_KEY }}å
+        run: dotnet nuget push src/IBI.WZDx/bin/Release/*.nupkg --source https://api.nuget.org/v3/index.json --api-key ${{ secrets.NUGET_API_KEY }}
