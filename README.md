@@ -12,7 +12,11 @@ The library provides the following functionality:
 - Create a WZDx [WorkZoneFeed](https://github.com/usdot-jpo-ode/wzdx/blob/main/spec-content/objects/WorkZoneFeed.md) or [DeviceFeed](https://github.com/usdot-jpo-ode/wzdx/blob/main/spec-content/objects/DeviceFeed.md) GeoJSON string by serializing WZDx C# objects modeled in this library.
 - Deserialize a WZDx Work Zone Feed or Device Feed GeoJSON string into C# objects modeled in this library.
 
-WZDx v4.0 and v4.1 are supported. The [WzdxSerializer](./src/IBI.WZDx/Serialization/WzdxSerializer.cs) defaults to outputting v4.1 (latest WZDx).
+### WZDx Version Support
+
+WZDx versions 4.0 and 4.1 are supported; the [WzdxSerializer](./src/IBI.WZDx/Serialization/WzdxSerializer.cs) defaults to outputting v4.1 (latest WZDx).
+
+[Detour road events](https://github.com/usdot-jpo-ode/wzdx/blob/main/spec-content/objects/DetourRoadEvent.md) are not supported. When provided with a Work Zone Feed that includes detour road events, the WzdxSerializer.DeserializeFeed method will deserialize the detour events into a [RoadEventFeature](./src/IBI.WZDx/Models/RoadEvents/RoadEventFeature.cs) with `Properties` as `null`.
 
 ## Usage
 

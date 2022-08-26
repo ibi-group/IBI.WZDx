@@ -627,11 +627,29 @@ public class WzdxSerializerTests
         [Fact]
         public void DeserializeFeed_JsonValid_DoesNotThrowException()
         {
-            var action = () => WzdxSerializer.DeserializeFeed<WorkZoneFeed>(_testValidWorkZoneFeed);
+            var action = () => WzdxSerializer.DeserializeFeed<WorkZoneFeed>(_testValidWorkZoneFeedWithoutDetours);
 
             var exception = Record.Exception(action);
 
             Assert.Null(exception);
+        }
+
+        [Fact]
+        public void DeserializeFeed_IncludesDetours_DoesNotThrowException()
+        {
+            var action = () => WzdxSerializer.DeserializeFeed<WorkZoneFeed>(_testValidWorkZoneFeedWithDetours);
+
+            var exception = Record.Exception(action);
+
+            Assert.Null(exception);
+        }
+
+        [Fact]
+        public void DeserializeFeed_IncludesDetours_DetourFeaturePropertiesIsNull()
+        {
+            WorkZoneFeed actualFeedObject = WzdxSerializer.DeserializeFeed<WorkZoneFeed>(_testValidWorkZoneFeedWithDetours);
+
+            Assert.Null(actualFeedObject.Features.First().Properties);
         }
 
         [Theory]
@@ -984,7 +1002,7 @@ public class WzdxSerializerTests
                 }
             };
 
-        private static string _testValidWorkZoneFeed = @"
+        private static string _testValidWorkZoneFeedWithoutDetours = @"
             {
                 ""feed_info"": {
                     ""update_date"": ""2020-06-18T15:00:00Z"",
@@ -1791,6 +1809,73 @@ public class WzdxSerializerTests
                                 -93.742189315999951,
                                 41.592481500000076
                             ]
+                            ]
+                        }
+                    }
+                ]
+            }";
+
+        private static string _testValidWorkZoneFeedWithDetours = @"
+            {
+                ""feed_info"": {
+                    ""update_date"": ""2020-06-18T15:00:00Z"",
+                    ""publisher"": ""TestDOT"",
+                    ""version"": ""4.1"",
+                    ""license"": ""https://creativecommons.org/publicdomain/zero/1.0/"",
+                    ""data_sources"": [
+                        {
+                            ""data_source_id"": ""1"",
+                            ""organization_name"": ""Test City 1""
+                        }
+                    ]
+                },
+                ""type"": ""FeatureCollection"",
+                ""features"": [
+                    {
+                        ""id"": ""71234"",
+                        ""type"": ""Feature"",
+                        ""properties"": {
+                            ""core_details"": {
+                                ""data_source_id"": ""1"",
+                                ""event_type"": ""detour"",
+                                ""road_names"": [
+                                    ""I-80""
+                                ],
+                                ""direction"": ""northbound"",
+                                ""description"": ""Test detour.""
+                            },
+                            ""is_start_date_verified"": false,
+                            ""is_end_date_verified"": false,
+                            ""start_date"": ""2010-01-01T01:00:00Z"",
+                            ""end_date"": ""2010-01-02T01:00:00Z""
+                        },
+                        ""geometry"": {
+                            ""type"": ""LineString"",
+                            ""coordinates"": [
+                                [
+                                    -93.776684050999961,
+                                    41.617961698000045
+                                ],
+                                [
+                                    -93.776682957,
+                                    41.618244962000063
+                                ],
+                                [
+                                    -93.776677372999984,
+                                    41.619603362000078
+                                ],
+                                [
+                                    -93.776674365999952,
+                                    41.620322783000063
+                                ],
+                                [
+                                    -93.776671741999962,
+                                    41.620950321000066
+                                ],
+                                [
+                                    -93.776688974999956,
+                                    41.622297226000057
+                                ]
                             ]
                         }
                     }
