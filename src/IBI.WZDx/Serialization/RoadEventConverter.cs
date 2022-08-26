@@ -46,6 +46,7 @@ internal class RoadEventConverter : JsonConverter<IRoadEvent>
         return eventType switch
         {
             "work-zone" => deserializeAsType(typeof(WorkZoneRoadEvent)),
+            "detour" => null,
             _ => throw new JsonException($"Unsupported event type '{eventType}'.")
         };
     }
