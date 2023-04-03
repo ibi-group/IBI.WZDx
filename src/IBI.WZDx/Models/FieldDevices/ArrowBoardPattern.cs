@@ -29,18 +29,18 @@ public enum ArrowBoardPattern
     /// <summary>
     /// Merge right represented by a pattern of chevrons (e.g. >>>) that does not flash or move.
     /// </summary>
-    RightChevronsStatic,
+    RightChevronStatic,
 
     /// <summary>
     /// Merge right represented by a pattern of chevrons (e.g. >>>) that that flashes on/off.
     /// </summary>
-    RightChevronsFlashing,
+    RightChevronFlashing,
 
     /// <summary>
     /// Merge right represented by a pattern of chevrons that is displayed in a progressing
     /// sequence.
     /// </summary>
-    RightChevronsSequential,
+    RightChevronSequential,
 
     /// <summary>
     /// Merge left represented by an arrow pattern (e.g. &lt;--) that does not flash or move.
@@ -61,18 +61,18 @@ public enum ArrowBoardPattern
     /// <summary>
     /// Merge left represented by a pattern of chevrons (e.g. &lt;&lt;&lt;) that does not flash or move.
     /// </summary>
-    LeftChevronsStatic,
+    LeftChevronStatic,
 
     /// <summary>
     /// Merge left represented by a pattern of chevrons (e.g. &lt;&lt;&lt;) that that flashes on/off.
     /// </summary>
-    LeftChevronsFlashing,
+    LeftChevronFlashing,
 
     /// <summary>
     /// Merge left represented by a pattern of chevrons that is displayed in a progressing
     /// sequence.
     /// </summary>
-    LeftChevronsSequential,
+    LeftChevronSequential,
 
     /// <summary>
     /// Split (merge left or right) represented by arrows pointing both left and right
