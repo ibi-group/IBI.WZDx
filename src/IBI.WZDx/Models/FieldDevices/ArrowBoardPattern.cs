@@ -67,13 +67,13 @@ public enum ArrowBoardPattern
     /// Merge left represented by a pattern of chevrons (e.g. &lt;&lt;&lt;) that that flashes on/off.
     /// </summary>
     LeftChevronFlashing,
-
+    
     /// <summary>
     /// Merge left represented by a pattern of chevrons that is displayed in a progressing
     /// sequence.
     /// </summary>
     LeftChevronSequential,
-
+    
     /// <summary>
     /// Split (merge left or right) represented by arrows pointing both left and right
     /// (e.g. &lt;-->) that does not flash or move.
