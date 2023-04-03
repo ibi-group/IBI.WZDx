@@ -7,7 +7,7 @@
     <Description>Models and utitlies for producing and consuming Work Zone Data Exchange (WZDx) data feeds.</Description>
     <PackageTags>WZDx;Work Zone Data Exchange;Work Zone Feed;Road Event;Device Feed;Field Device;GeoJSON</PackageTags>
     <Authors>IBI Group</Authors>
-    <VersionPrefix>4.1.0</VersionPrefix>
+    <VersionPrefix>4.1.1</VersionPrefix>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <RepositoryType>git</RepositoryType>
