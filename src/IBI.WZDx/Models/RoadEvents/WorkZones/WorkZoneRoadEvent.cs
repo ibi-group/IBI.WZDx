@@ -152,7 +152,9 @@ public record WorkZoneRoadEvent(
             && TypesOfWork.NullHandlingSequenceEqual(other.TypesOfWork)
             && WorkerPresence == other.WorkerPresence
             && ReducedSpeedLimitKph == other.ReducedSpeedLimitKph
-            && Restrictions.NullHandlingSequenceEqual(other.Restrictions);
+            && Restrictions.NullHandlingSequenceEqual(other.Restrictions)
+            && ImpactedCdsCurbZones.NullHandlingSequenceEqual(other.ImpactedCdsCurbZones)
+            && WorkZoneType == other.WorkZoneType;
     }
 
     /// <inheritdoc/>
@@ -206,6 +208,16 @@ public record WorkZoneRoadEvent(
                 hash.Add(restriction);
             }
         }
+
+        if (ImpactedCdsCurbZones != null)
+        {
+            foreach(CdsCurbZonesReference cdsCurbZonesReference in ImpactedCdsCurbZones)
+            {
+                hash.Add(cdsCurbZonesReference);
+            }
+        }
+
+        hash.Add(WorkZoneType);
 
         return hash.ToHashCode();
     }
