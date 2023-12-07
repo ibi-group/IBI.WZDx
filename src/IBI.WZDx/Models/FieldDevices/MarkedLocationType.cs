@@ -69,6 +69,11 @@ public enum MarkedLocationType
     RoadClosure,
 
     /// <summary>
+    /// A work truck with lights flashing, actively engaged in construction or maintenance activity on the roadway.
+    /// </summary>
+    WorkTruckWithLightsFlashing,
+
+    /// <summary>
     /// A temporary traffic signal.
     /// </summary>
     [Obsolete("Use TrafficSignal field device object instead.")]
