@@ -30,7 +30,11 @@ public record CdsCurbZonesReference(
     {
         var hash = new HashCode();
 
-        hash.Add(CdsCurbZoneIds);
+        foreach (string id in CdsCurbZoneIds)
+        {
+            hash.Add(id);
+        }
+
         hash.Add(CdsCurbsApiUrl);
 
         return hash.ToHashCode();
