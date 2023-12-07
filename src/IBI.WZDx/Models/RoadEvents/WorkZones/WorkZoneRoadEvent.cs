@@ -89,6 +89,8 @@ namespace IBI.WZDx.Models.RoadEvents.WorkZones;
 /// A list of zero or more road restrictions that apply to the roadway segment described by this
 /// road event.
 /// </param>
+/// <param name="ImpactedCdsCurbZones">A list of references to external CDS Curb Zones impacted by 
+/// the work zone.</param>
 public record WorkZoneRoadEvent(
     RoadEventCoreDetails CoreDetails,
     DateTimeOffset StartDate,
@@ -113,7 +115,8 @@ public record WorkZoneRoadEvent(
     IEnumerable<TypeOfWork>? TypesOfWork = null,
     WorkerPresence? WorkerPresence = null,
     double? ReducedSpeedLimitKph = null,
-    IEnumerable<Restriction>? Restrictions = null
+    IEnumerable<Restriction>? Restrictions = null,
+    IEnumerable<CdsCurbZonesReference>? ImpactedCdsCurbZones = null
     ) : IRoadEvent
 {
     /// <summary>

@@ -804,6 +804,13 @@ public class WzdxSerializerTests
                                     Restrictions: new Restriction[]
                                     {
                                         new Restriction(RestrictionType.NoTrucks)
+                                    },
+                                    ImpactedCdsCurbZones: new CdsCurbZonesReference[]
+                                    {
+                                        new CdsCurbZonesReference(
+                                            CdsCurbZoneIds: new string[] {"Zone Id 1", "Zone Id 2"},
+                                            CdsCurbsApiUrl: "API Url"
+                                            )
                                     }
                                     ),
                                 Geometry: new RoadEventFeatureGeometry(
@@ -961,6 +968,12 @@ public class WzdxSerializerTests
                                     ""restrictions"": [
                                         {
                                             ""type"": ""no-trucks""
+                                        }
+                                    ],
+                                    ""impacted_cds_curb_zones"": [
+                                        {
+                                            ""cds_curb_zone_ids"": [ ""Zone Id 1"", ""Zone Id 2"" ],
+                                            ""cds_curbs_api_url"": ""API Url""
                                         }
                                     ]
                                 },
