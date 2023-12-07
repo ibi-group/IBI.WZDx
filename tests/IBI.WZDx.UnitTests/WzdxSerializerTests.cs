@@ -811,7 +811,8 @@ public class WzdxSerializerTests
                                             CdsCurbZoneIds: new string[] {"Zone Id 1", "Zone Id 2"},
                                             CdsCurbsApiUrl: "API Url"
                                             )
-                                    }
+                                    },
+                                    WorkZoneType: WorkZoneType.Static
                                     ),
                                 Geometry: new RoadEventFeatureGeometry(
                                     Type: RoadEventFeatureGeometryType.LineString,
@@ -975,7 +976,8 @@ public class WzdxSerializerTests
                                             ""cds_curb_zone_ids"": [ ""Zone Id 1"", ""Zone Id 2"" ],
                                             ""cds_curbs_api_url"": ""API Url""
                                         }
-                                    ]
+                                    ],
+                                    ""work_zone_type"": ""static""
                                 },
                                 ""geometry"": {
                                     ""type"": ""LineString"",
