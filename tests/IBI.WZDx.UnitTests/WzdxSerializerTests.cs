@@ -122,7 +122,8 @@ public class WzdxSerializerTests
                                         Make: "Ver-Mac",
                                         Model: "AB-1",
                                         SerialNumber: "1234567890",
-                                        FirmwareVersion: "1.0.0"
+                                        FirmwareVersion: "1.0.0",
+                                        VelocityKph: 10.1
                                         ),
                                     Pattern: ArrowBoardPattern.RightArrowFlashing,
                                     IsMoving: false,
@@ -366,7 +367,8 @@ public class WzdxSerializerTests
                                         ""make"": ""Ver-Mac"",
                                         ""model"": ""AB-1"",
                                         ""serial_number"": ""1234567890"",
-                                        ""firmware_version"": ""1.0.0""
+                                        ""firmware_version"": ""1.0.0"",
+                                        ""velocity_kph"": 10.1
                                     },
                                     ""pattern"": ""right-arrow-flashing"",
                                     ""is_moving"": false,
