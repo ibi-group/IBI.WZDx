@@ -97,7 +97,7 @@ namespace IBI.WZDx.Models.RoadEvents.WorkZones;
 /// impacted by the work zone.
 /// </param>
 /// <param name="WorkZoneType">
-/// The type of work zone road event, such as if the road event is staticor actively moving as part
+/// The type of work zone road event, such as if the road event is static or actively moving as part
 /// of a moving operation.
 /// </param>
 public record WorkZoneRoadEvent(
