@@ -19,7 +19,8 @@ public enum WorkZoneType
     Moving,
 
     /// <summary>
-    /// The planned extent of a moving operation. The active work area will be somewhere within this road event.
+    /// The road event is the planned extent of a moving operation. The active work area will be 
+    /// somewhere within this road event.
     /// </summary>
     /// <remarks>
     /// As opposed to <see cref="Moving"/>, the road event geometry typically does not actively change. 
