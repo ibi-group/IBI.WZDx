@@ -1,8 +1,9 @@
 namespace IBI.WZDx.Models.FieldDevices;
 
 /// <summary>
-/// Describes a flashing beacon light of any form (e.g. trailer-mounted, vehicle), used to indicate
-/// something and capture driver attention.
+/// The FlashingBeacon object describes a flashing warning beacon used to supplement a temporary 
+/// traffic control device. A flashing warning beacon is mounted on a sign or channelizing device 
+/// and used to indicate a warning condition and capture driver attention.
 /// </summary>
 /// <param name="CoreDetails">
 /// The core details of the flashing beacon device.
