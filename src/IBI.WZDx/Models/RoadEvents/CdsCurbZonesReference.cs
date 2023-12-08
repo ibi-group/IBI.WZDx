@@ -8,7 +8,12 @@ namespace IBI.WZDx.Models.RoadEvents;
 /// Describes specific curb zones that are impacted by a work zone via an external reference to the
 /// curb data specification's.
 /// </summary>
-/// <param name="CdsCurbZoneIds">A list of CDS Curb Zone Ids</param>
+/// <param name="CdsCurbZoneIds">A list of 
+/// <see href="https://github.com/openmobilityfoundation/curb-data-specification/tree/main/curbs#curb-zone">
+/// CDS Curb Zone
+/// </see> 
+/// <c>id</c>s.
+/// </param>
 /// <param name="CdsCurbsApiUrl">An identifier for the source of the requested CDS Curbs API.</param>
 public record CdsCurbZonesReference(
     IEnumerable<string> CdsCurbZoneIds,
