@@ -810,7 +810,7 @@ public class WzdxSerializerTests
                                     ImpactedCdsCurbZones: new CdsCurbZonesReference[]
                                     {
                                         new CdsCurbZonesReference(
-                                            CdsCurbZoneIds: new string[] {"Zone Id 1", "Zone Id 2"},
+                                            CdsCurbZoneIds: new string[] { "Zone Id 1", "Zone Id 2" },
                                             CdsCurbsApiUrl: "API Url"
                                             )
                                     },
@@ -818,7 +818,8 @@ public class WzdxSerializerTests
                                     ),
                                 Geometry: new RoadEventFeatureGeometry(
                                     Type: RoadEventFeatureGeometryType.LineString,
-                                    Coordinates: new double[][] {
+                                    Coordinates: new double[][]
+                                    {
                                         new double[]
                                         {
                                             -93.77668405099996,
