@@ -1,7 +1,9 @@
-﻿namespace IBI.WZDx.Models.RoadEvents;
+﻿using IBI.WZDx.Models.RoadEvents.WorkZones;
+
+namespace IBI.WZDx.Models.RoadEvents;
 
 /// <summary>
-/// The type of work zone road event.
+/// The type of <see cref="WorkZoneRoadEvent"/>.
 /// </summary>
 public enum WorkZoneType
 {
