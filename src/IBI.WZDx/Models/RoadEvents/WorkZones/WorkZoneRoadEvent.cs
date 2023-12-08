@@ -90,7 +90,12 @@ namespace IBI.WZDx.Models.RoadEvents.WorkZones;
 /// road event.
 /// </param>
 /// <param name="ImpactedCdsCurbZones">
-/// A list of references to external CDS Curb Zones impacted by the work zone.</param>
+/// A list of references to external 
+/// <see href="https://github.com/openmobilityfoundation/curb-data-specification/tree/main/curbs#curb-zone">
+/// CDS Curb Zones
+/// </see> 
+/// impacted by the work zone.
+/// </param>
 /// <param name="WorkZoneType">
 /// The type of work zone road event, such as if the road event is staticor actively moving as part
 /// of a moving operation.
