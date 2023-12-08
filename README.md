@@ -14,7 +14,7 @@ The library provides the following functionality:
 
 ### WZDx Version Support
 
-WZDx versions 4.0 and 4.1 are supported; the [WzdxSerializer](./src/IBI.WZDx/Serialization/WzdxSerializer.cs) defaults to outputting v4.1 (latest WZDx).
+WZDx versions 4.0, 4.1 & 4.2 are supported; the [WzdxSerializer](./src/IBI.WZDx/Serialization/WzdxSerializer.cs) defaults to outputting v4.2 (latest WZDx).
 
 [Detour road events](https://github.com/usdot-jpo-ode/wzdx/blob/main/spec-content/objects/DetourRoadEvent.md) are not supported. When provided with a Work Zone Feed that includes detour road events, the WzdxSerializer.DeserializeFeed method will deserialize the detour events into a [RoadEventFeature](./src/IBI.WZDx/Models/RoadEvents/RoadEventFeature.cs) with `Properties` as `null`.
 

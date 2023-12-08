@@ -122,7 +122,8 @@ public class WzdxSerializerTests
                                         Make: "Ver-Mac",
                                         Model: "AB-1",
                                         SerialNumber: "1234567890",
-                                        FirmwareVersion: "1.0.0"
+                                        FirmwareVersion: "1.0.0",
+                                        VelocityKph: 10.1
                                         ),
                                     Pattern: ArrowBoardPattern.RightArrowFlashing,
                                     IsMoving: false,
@@ -366,7 +367,8 @@ public class WzdxSerializerTests
                                         ""make"": ""Ver-Mac"",
                                         ""model"": ""AB-1"",
                                         ""serial_number"": ""1234567890"",
-                                        ""firmware_version"": ""1.0.0""
+                                        ""firmware_version"": ""1.0.0"",
+                                        ""velocity_kph"": 10.1
                                     },
                                     ""pattern"": ""right-arrow-flashing"",
                                     ""is_moving"": false,
@@ -804,7 +806,15 @@ public class WzdxSerializerTests
                                     Restrictions: new Restriction[]
                                     {
                                         new Restriction(RestrictionType.NoTrucks)
-                                    }
+                                    },
+                                    ImpactedCdsCurbZones: new CdsCurbZonesReference[]
+                                    {
+                                        new CdsCurbZonesReference(
+                                            CdsCurbZoneIds: new string[] {"Zone Id 1", "Zone Id 2"},
+                                            CdsCurbsApiUrl: "API Url"
+                                            )
+                                    },
+                                    WorkZoneType: WorkZoneType.Static
                                     ),
                                 Geometry: new RoadEventFeatureGeometry(
                                     Type: RoadEventFeatureGeometryType.LineString,
@@ -962,7 +972,14 @@ public class WzdxSerializerTests
                                         {
                                             ""type"": ""no-trucks""
                                         }
-                                    ]
+                                    ],
+                                    ""impacted_cds_curb_zones"": [
+                                        {
+                                            ""cds_curb_zone_ids"": [ ""Zone Id 1"", ""Zone Id 2"" ],
+                                            ""cds_curbs_api_url"": ""API Url""
+                                        }
+                                    ],
+                                    ""work_zone_type"": ""static""
                                 },
                                 ""geometry"": {
                                     ""type"": ""LineString"",

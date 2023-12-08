@@ -72,6 +72,9 @@ namespace IBI.WZDx.Models.FieldDevices;
 /// <param name="FirmwareVersion">
 ///  The version of firmware the device is using to operate.
 /// </param>
+/// <param name="VelocityKph">
+/// The velocity of the device in kilometers per hour.
+/// </param>
 public record FieldDeviceCoreDetails(
     FieldDeviceType DeviceType,
     string DataSourceId,
@@ -89,7 +92,8 @@ public record FieldDeviceCoreDetails(
     string? Make = null,
     string? Model = null,
     string? SerialNumber = null,
-    string? FirmwareVersion = null
+    string? FirmwareVersion = null,
+    double? VelocityKph = null
     )
 {
     /// <inheritdoc/>
@@ -112,7 +116,8 @@ public record FieldDeviceCoreDetails(
             && Make == other.Make
             && Model == other.Model
             && SerialNumber == other.SerialNumber
-            && FirmwareVersion == other.FirmwareVersion;
+            && FirmwareVersion == other.FirmwareVersion
+            && VelocityKph == other.VelocityKph;
     }
 
     /// <inheritdoc/>
@@ -184,6 +189,11 @@ public record FieldDeviceCoreDetails(
             {
                 hash.Add(roadEventId);
             }
+        }
+
+        if (VelocityKph != null)
+        {
+            hash.Add(VelocityKph);
         }
 
         return hash.ToHashCode();
