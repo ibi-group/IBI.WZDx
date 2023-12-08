@@ -211,7 +211,7 @@ public record WorkZoneRoadEvent(
 
         if (ImpactedCdsCurbZones != null)
         {
-            foreach(CdsCurbZonesReference cdsCurbZonesReference in ImpactedCdsCurbZones)
+            foreach (CdsCurbZonesReference cdsCurbZonesReference in ImpactedCdsCurbZones)
             {
                 hash.Add(cdsCurbZonesReference);
             }
