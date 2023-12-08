@@ -89,6 +89,17 @@ namespace IBI.WZDx.Models.RoadEvents.WorkZones;
 /// A list of zero or more road restrictions that apply to the roadway segment described by this
 /// road event.
 /// </param>
+/// <param name="ImpactedCdsCurbZones">
+/// A list of references to external 
+/// <see href="https://github.com/openmobilityfoundation/curb-data-specification/tree/main/curbs#curb-zone">
+/// CDS Curb Zones
+/// </see> 
+/// impacted by the work zone.
+/// </param>
+/// <param name="WorkZoneType">
+/// The type of work zone road event, such as if the road event is static or actively moving as part
+/// of a moving operation.
+/// </param>
 public record WorkZoneRoadEvent(
     RoadEventCoreDetails CoreDetails,
     DateTimeOffset StartDate,
@@ -113,7 +124,9 @@ public record WorkZoneRoadEvent(
     IEnumerable<TypeOfWork>? TypesOfWork = null,
     WorkerPresence? WorkerPresence = null,
     double? ReducedSpeedLimitKph = null,
-    IEnumerable<Restriction>? Restrictions = null
+    IEnumerable<Restriction>? Restrictions = null,
+    IEnumerable<CdsCurbZonesReference>? ImpactedCdsCurbZones = null,
+    WorkZoneType? WorkZoneType = null
     ) : IRoadEvent
 {
     /// <summary>
@@ -144,7 +157,9 @@ public record WorkZoneRoadEvent(
             && TypesOfWork.NullHandlingSequenceEqual(other.TypesOfWork)
             && WorkerPresence == other.WorkerPresence
             && ReducedSpeedLimitKph == other.ReducedSpeedLimitKph
-            && Restrictions.NullHandlingSequenceEqual(other.Restrictions);
+            && Restrictions.NullHandlingSequenceEqual(other.Restrictions)
+            && ImpactedCdsCurbZones.NullHandlingSequenceEqual(other.ImpactedCdsCurbZones)
+            && WorkZoneType == other.WorkZoneType;
     }
 
     /// <inheritdoc/>
@@ -198,6 +213,16 @@ public record WorkZoneRoadEvent(
                 hash.Add(restriction);
             }
         }
+
+        if (ImpactedCdsCurbZones != null)
+        {
+            foreach (CdsCurbZonesReference cdsCurbZonesReference in ImpactedCdsCurbZones)
+            {
+                hash.Add(cdsCurbZonesReference);
+            }
+        }
+
+        hash.Add(WorkZoneType);
 
         return hash.ToHashCode();
     }

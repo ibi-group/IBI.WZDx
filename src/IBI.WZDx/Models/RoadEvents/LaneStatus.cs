@@ -6,12 +6,12 @@ namespace IBI.WZDx.Models.RoadEvents;
 public enum LaneStatus
 {
     /// <summary>
-    /// The lane is open for travel.
+    /// The lane is open for normal usage.
     /// </summary>
     Open,
-    
+
     /// <summary>
-    /// The lane is closed to travel.
+    /// The lane is closed to normal usage.
     /// </summary>
     Closed,
 

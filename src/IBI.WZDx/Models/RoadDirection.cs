@@ -33,6 +33,16 @@ public enum RoadDirection
     Westbound,
 
     /// <summary>
+    /// The road direction is on the inner loop of a ring road or beltway.
+    /// </summary>
+    InnerLoop,
+
+    /// <summary>
+    /// The road direction is on the outer loop of a ring road or beltway.
+    /// </summary>
+    OuterLoop,
+
+    /// <summary>
     /// The road does not have a signed direction.
     /// </summary>
     /// <remarks>
