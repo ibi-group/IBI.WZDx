@@ -1,21 +1,15 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using IBI.WZDx.Equality;
-
-#pragma warning disable CS0618 // Type or member is obsolete
 
 namespace IBI.WZDx.Models.RoadEvents.WorkZones;
 
 /// <summary>
-/// Describes a work zone road event including where, when, and what activities are taking place
-/// within a work zone on a roadway.
+/// Describes a detour on a roadway. It can be either a segment of a detour
+/// (each segment represented by its own <see cref="DetourRoadEvent"/>) or the entire detour.
 /// </summary>
-/// <remarks>
-/// A full "work zone" is represented by one or more <see cref="WorkZoneRoadEvent"/>s.
-/// </remarks>
 /// <param name="CoreDetails">
-/// The core details of the road event that apply to all types of road events, not specific to work
-/// zones.
+/// The core details of the road event that apply to all types of road events, not specific to detour road events. 
 /// </param>
 /// <param name="StartDate">
 /// The UTC time and date when the event begins.
@@ -24,7 +18,7 @@ namespace IBI.WZDx.Models.RoadEvents.WorkZones;
 /// The UTC time and date when the event ends.
 /// </param>
 /// <param name="LocationMethod">
-/// The typical method used to locate the beginning and end of a work zone impact area.
+/// The typical method used to locate the beginning and end of a detour area.
 /// </param>
 /// <param name="VehicleImpact">
 /// The impact to vehicular lanes along a single road in a single direction.
@@ -35,27 +29,15 @@ namespace IBI.WZDx.Models.RoadEvents.WorkZones;
 /// <param name="IsEndDateVerified">
 /// Indicates if work has been confirmed to have ended, such as from a person or field device.
 /// </param>
-/// <param name="StartDateAccuracy">
-/// A measure of how accurate the start date-time is.
-/// </param>
-/// <param name="EndDateAccuracy">
-/// A measure of how accurate the end date-time is.
-/// </param>
 /// <param name="IsStartPositionVerified">
 /// Indicates if the start position (first geometric coordinate pair, see
 /// <see cref="RoadEventFeature.Geometry"/>) is based on actual reported  data from a GPS-equipped
-/// device that measured the location of the start of the work zone.
+/// device that measured the location of the start of the detour.
 /// </param>
 /// <param name="IsEndPositionVerified">
 /// Indicates if the end position (last geometric coordinate pair, see
 /// <see cref="RoadEventFeature.Geometry"/>) is based on actual reported data from a GPS-equipped
-/// device that measured the location of the end of the work zone.
-/// </param>
-/// <param name="BeginningAccuracy">
-/// Indicates how the beginning coordinate was defined.
-/// </param>
-/// <param name="EndingAccuracy">
-/// Indicates how the ending coordinate was defined.
+/// device that measured the location of the end of the detour.
 /// </param>
 /// <param name="Lanes">
 /// A list of individual lanes within a road event (roadway segment).
@@ -72,11 +54,8 @@ namespace IBI.WZDx.Models.RoadEvents.WorkZones;
 /// <param name="EndingMilepost">
 /// The linear distance measured against a milepost marker along a roadway where the event ends.
 /// </param>
-/// <param name="EventStatus">
-/// The status of the event.
-/// </param>
 /// <param name="TypesOfWork">
-/// A list of the types of work being done in a road event and an indiciation of if each type
+/// A list of the types of work being done in a road event and an indication of if each type
 /// results in an architectural change to the roadway.
 /// </param>
 /// <param name="WorkerPresence">
@@ -96,13 +75,13 @@ namespace IBI.WZDx.Models.RoadEvents.WorkZones;
 /// <see href="https://github.com/openmobilityfoundation/curb-data-specification/tree/main/curbs#curb-zone">
 /// CDS Curb Zones
 /// </see> 
-/// impacted by the work zone.
+/// impacted by the detour.
 /// </param>
 /// <param name="WorkZoneType">
-/// The type of work zone road event, such as if the road event is static or actively moving as part
+/// The type of detour road event, such as if the road event is static or actively moving as part
 /// of a moving operation.
 /// </param>
-public record WorkZoneRoadEvent(
+public record DetourRoadEvent(
     RoadEventCoreDetails CoreDetails,
     DateTimeOffset StartDate,
     DateTimeOffset EndDate,
@@ -110,31 +89,25 @@ public record WorkZoneRoadEvent(
     VehicleImpact VehicleImpact,
     bool? IsStartDateVerified = null,
     bool? IsEndDateVerified = null,
-    [property: Obsolete("Use IsStartDateVerified instead.")]TimeVerification? StartDateAccuracy = null,
-    [property: Obsolete("Use IsEndDateVerified instead.")]TimeVerification? EndDateAccuracy = null,
     bool? IsStartPositionVerified = null,
     bool? IsEndPositionVerified = null,
-    [property: Obsolete("Use IsStartPositionVerified instead.")]SpatialVerification? BeginningAccuracy = null,
-    [property: Obsolete("Use IsEndPositionVerified instead.")]SpatialVerification? EndingAccuracy = null,
-    IEnumerable<Lane>? Lanes = null,
+    WorkZoneType? WorkZoneType = null,
+    List<CdsCurbZonesReference>? ImpactedCdsCurbZones = null,
+    List<Lane>? Lanes = null,
     string? BeginningCrossStreet = null,
     string? EndingCrossStreet = null,
     double? BeginningMilepost = null,
     double? EndingMilepost = null,
-    [property: Obsolete("Determine an event's status based on the dates and verification properties.")]
-        EventStatus? EventStatus = null,
-    IEnumerable<TypeOfWork>? TypesOfWork = null,
+    List<TypeOfWork>? TypesOfWork = null,
     WorkerPresence? WorkerPresence = null,
     double? ReducedSpeedLimitKph = null,
-    IEnumerable<Restriction>? Restrictions = null,
-    IEnumerable<CdsCurbZonesReference>? ImpactedCdsCurbZones = null,
-    WorkZoneType? WorkZoneType = null
+    List<Restriction>? Restrictions = null
     ) : IRoadEvent
 {
     /// <summary>
-    /// Determine if another <see cref="WorkZoneRoadEvent"/> is equal to this <see cref="WorkZoneRoadEvent"/>.
+    /// Determine if another <see cref="DetourRoadEvent"/> is equal to this <see cref="DetourRoadEvent"/>.
     /// </summary>
-    public virtual bool Equals(WorkZoneRoadEvent? other)
+    public virtual bool Equals(DetourRoadEvent? other)
     {
         return other != null
             && CoreDetails == other.CoreDetails
@@ -144,21 +117,16 @@ public record WorkZoneRoadEvent(
             && VehicleImpact == other.VehicleImpact
             && IsStartDateVerified == other.IsStartDateVerified
             && IsEndDateVerified == other.IsEndDateVerified
-            && StartDateAccuracy == other.StartDateAccuracy
-            && EndDateAccuracy == other.EndDateAccuracy
             && IsStartPositionVerified == other.IsStartPositionVerified
             && IsEndPositionVerified == other.IsEndPositionVerified
-            && BeginningAccuracy == other.BeginningAccuracy
-            && EndingAccuracy == other.EndingAccuracy
             && Lanes.NullHandlingSequenceEqual(other.Lanes)
             && BeginningCrossStreet == other.BeginningCrossStreet
             && EndingCrossStreet == other.EndingCrossStreet
-            && BeginningMilepost == other.BeginningMilepost
-            && EndingMilepost == other.EndingMilepost
-            && EventStatus == other.EventStatus
+            && BeginningMilepost.NullEqualsApproximation(other.BeginningMilepost)
+            && EndingMilepost.NullEqualsApproximation(other.EndingMilepost)
             && TypesOfWork.NullHandlingSequenceEqual(other.TypesOfWork)
             && WorkerPresence == other.WorkerPresence
-            && ReducedSpeedLimitKph == other.ReducedSpeedLimitKph
+            && ReducedSpeedLimitKph.NullEqualsApproximation(other.ReducedSpeedLimitKph)
             && Restrictions.NullHandlingSequenceEqual(other.Restrictions)
             && ImpactedCdsCurbZones.NullHandlingSequenceEqual(other.ImpactedCdsCurbZones)
             && WorkZoneType == other.WorkZoneType;
@@ -176,14 +144,10 @@ public record WorkZoneRoadEvent(
         hash.Add(VehicleImpact);
         hash.Add(IsStartDateVerified);
         hash.Add(IsEndDateVerified);
-        hash.Add(StartDateAccuracy);
-        hash.Add(EndDateAccuracy);
         hash.Add(IsStartPositionVerified);
         hash.Add(IsEndPositionVerified);
-        hash.Add(BeginningAccuracy);
-        hash.Add(EndingAccuracy);
 
-        if (Lanes != null)
+        if (Lanes is not null)
         {
             foreach (Lane lane in Lanes)
             {
@@ -195,9 +159,8 @@ public record WorkZoneRoadEvent(
         hash.Add(EndingCrossStreet);
         hash.Add(BeginningMilepost);
         hash.Add(EndingMilepost);
-        hash.Add(EventStatus);
 
-        if (TypesOfWork != null)
+        if (TypesOfWork is not null)
         {
             foreach (TypeOfWork typeOfWork in TypesOfWork)
             {
@@ -208,7 +171,7 @@ public record WorkZoneRoadEvent(
         hash.Add(WorkerPresence);
         hash.Add(ReducedSpeedLimitKph);
 
-        if (Restrictions != null)
+        if (Restrictions is not null)
         {
             foreach (Restriction restriction in Restrictions)
             {
@@ -216,7 +179,7 @@ public record WorkZoneRoadEvent(
             }
         }
 
-        if (ImpactedCdsCurbZones != null)
+        if (ImpactedCdsCurbZones is not null)
         {
             foreach (CdsCurbZonesReference cdsCurbZonesReference in ImpactedCdsCurbZones)
             {

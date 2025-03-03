@@ -4,6 +4,8 @@ using System.Linq;
 using IBI.WZDx.Equality;
 using IBI.WZDx.Models.RoadEvents.WorkZones;
 
+#pragma warning disable CS0618 // Type or member is obsolete
+
 namespace IBI.WZDx.Models.RoadEvents;
 
 /// <summary>
