@@ -40,14 +40,14 @@ internal class RoadEventConverter : JsonConverter<IRoadEvent>
             .GetProperty("event_type")
             .GetString();
 
+        IRoadEvent? DeserializeAsType(Type type) => JsonSerializer.Deserialize(jsonObject, type, options) as IRoadEvent;
+        
         return eventType switch
         {
             "work-zone" => DeserializeAsType(typeof(WorkZoneRoadEvent)),
             "detour" => DeserializeAsType(typeof(DetourRoadEvent)),
             _ => throw new JsonException($"Unsupported event type '{eventType}'.")
         };
-
-        IRoadEvent? DeserializeAsType(Type type) => JsonSerializer.Deserialize(jsonObject, type, options) as IRoadEvent;
     }
 
     /// <inheritdoc />

@@ -2,8 +2,6 @@ using System;
 using System.Collections.Generic;
 using IBI.WZDx.Equality;
 
-#pragma warning disable CS0618 // Type or member is obsolete
-
 namespace IBI.WZDx.Models.RoadEvents.WorkZones;
 
 /// <summary>
@@ -76,7 +74,7 @@ namespace IBI.WZDx.Models.RoadEvents.WorkZones;
 /// The status of the event.
 /// </param>
 /// <param name="TypesOfWork">
-/// A list of the types of work being done in a road event and an indiciation of if each type
+/// A list of the types of work being done in a road event and an indication of if each type
 /// results in an architectural change to the roadway.
 /// </param>
 /// <param name="WorkerPresence">
@@ -110,8 +108,10 @@ public record WorkZoneRoadEvent(
     VehicleImpact VehicleImpact,
     bool? IsStartDateVerified = null,
     bool? IsEndDateVerified = null,
+#pragma warning disable CS0618 // Type or member is obsolete
     [property: Obsolete("Use IsStartDateVerified instead.")]TimeVerification? StartDateAccuracy = null,
     [property: Obsolete("Use IsEndDateVerified instead.")]TimeVerification? EndDateAccuracy = null,
+#pragma warning restore CS0618 // Type or member is obsolete
     bool? IsStartPositionVerified = null,
     bool? IsEndPositionVerified = null,
     [property: Obsolete("Use IsStartPositionVerified instead.")]SpatialVerification? BeginningAccuracy = null,
@@ -121,8 +121,10 @@ public record WorkZoneRoadEvent(
     string? EndingCrossStreet = null,
     double? BeginningMilepost = null,
     double? EndingMilepost = null,
+#pragma warning disable CS0618 // Type or member is obsolete
     [property: Obsolete("Determine an event's status based on the dates and verification properties.")]
         EventStatus? EventStatus = null,
+#pragma warning restore CS0618 // Type or member is obsolete
     IEnumerable<TypeOfWork>? TypesOfWork = null,
     WorkerPresence? WorkerPresence = null,
     double? ReducedSpeedLimitKph = null,
@@ -144,18 +146,24 @@ public record WorkZoneRoadEvent(
             && VehicleImpact == other.VehicleImpact
             && IsStartDateVerified == other.IsStartDateVerified
             && IsEndDateVerified == other.IsEndDateVerified
+#pragma warning disable CS0618 // Type or member is obsolete
             && StartDateAccuracy == other.StartDateAccuracy
             && EndDateAccuracy == other.EndDateAccuracy
+#pragma warning restore CS0618 // Type or member is obsolete
             && IsStartPositionVerified == other.IsStartPositionVerified
             && IsEndPositionVerified == other.IsEndPositionVerified
+#pragma warning disable CS0618 // Type or member is obsolete
             && BeginningAccuracy == other.BeginningAccuracy
             && EndingAccuracy == other.EndingAccuracy
+#pragma warning restore CS0618 // Type or member is obsolete
             && Lanes.NullHandlingSequenceEqual(other.Lanes)
             && BeginningCrossStreet == other.BeginningCrossStreet
             && EndingCrossStreet == other.EndingCrossStreet
             && BeginningMilepost == other.BeginningMilepost
             && EndingMilepost == other.EndingMilepost
+#pragma warning disable CS0618 // Type or member is obsolete
             && EventStatus == other.EventStatus
+#pragma warning restore CS0618 // Type or member is obsolete
             && TypesOfWork.NullHandlingSequenceEqual(other.TypesOfWork)
             && WorkerPresence == other.WorkerPresence
             && ReducedSpeedLimitKph == other.ReducedSpeedLimitKph
@@ -176,12 +184,16 @@ public record WorkZoneRoadEvent(
         hash.Add(VehicleImpact);
         hash.Add(IsStartDateVerified);
         hash.Add(IsEndDateVerified);
+#pragma warning disable CS0618 // Type or member is obsolete
         hash.Add(StartDateAccuracy);
         hash.Add(EndDateAccuracy);
+#pragma warning restore CS0618 // Type or member is obsolete
         hash.Add(IsStartPositionVerified);
         hash.Add(IsEndPositionVerified);
+#pragma warning disable CS0618 // Type or member is obsolete
         hash.Add(BeginningAccuracy);
         hash.Add(EndingAccuracy);
+#pragma warning restore CS0618 // Type or member is obsolete
 
         if (Lanes != null)
         {
@@ -195,7 +207,9 @@ public record WorkZoneRoadEvent(
         hash.Add(EndingCrossStreet);
         hash.Add(BeginningMilepost);
         hash.Add(EndingMilepost);
+#pragma warning disable CS0618 // Type or member is obsolete
         hash.Add(EventStatus);
+#pragma warning restore CS0618 // Type or member is obsolete
 
         if (TypesOfWork != null)
         {

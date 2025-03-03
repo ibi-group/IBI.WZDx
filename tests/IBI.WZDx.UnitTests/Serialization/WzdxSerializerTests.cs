@@ -9,8 +9,6 @@ using IBI.WZDx.Models.RoadEvents.WorkZones;
 using IBI.WZDx.Serialization;
 using Xunit;
 
-#pragma warning disable CS0618 // Type or member is obsolete
-
 namespace IBI.WZDx.UnitTests.Serialization;
 
 /// <summary>
@@ -725,6 +723,7 @@ public class WzdxSerializerTests
                                         Description: "Single direction work zone with lane-level information.",
                                         CreationDate: new DateTimeOffset(2023, 6, 17, 18, 0, 0, TimeSpan.Zero),
                                         UpdateDate: new DateTimeOffset(2023, 6, 18, 14, 37, 31, TimeSpan.Zero),
+#pragma warning disable CS0618 // Type or member is obsolete
                                         Relationship: new Relationship(
                                             First: ["4fee99c9-e138-4a21-87ba-297ca22234ab"],
                                             Next: ["6db3aa76-8851-4e09-af28-cc81d58cd848"],
@@ -732,14 +731,17 @@ public class WzdxSerializerTests
                                             Children: ["8739c2c3-8f46-421c-843b-2464fc00bf0b"]
                                             )
                                         ),
+#pragma warning restore CS0618 // Type or member is obsolete
                                     StartDate: new DateTimeOffset(2023, 6, 19, 7, 0, 0, TimeSpan.Zero),
                                     EndDate: new DateTimeOffset(2023, 6, 19, 19, 0, 0, TimeSpan.Zero),
                                     VehicleImpact: VehicleImpact.SomeLanesClosed,
                                     LocationMethod: LocationMethod.ChannelDeviceMethod,
                                     IsStartDateVerified: false,
                                     IsEndDateVerified: false,
+#pragma warning disable CS0618 // Type or member is obsolete
                                     StartDateAccuracy: TimeVerification.Estimated,
                                     EndDateAccuracy: TimeVerification.Estimated,
+#pragma warning restore CS0618 // Type or member is obsolete
                                     IsStartPositionVerified: true,
                                     IsEndPositionVerified: true,
                                     BeginningAccuracy: SpatialVerification.Estimated,
@@ -769,7 +771,9 @@ public class WzdxSerializerTests
                                     EndingCrossStreet: "First Street",
                                     BeginningMilepost: 125.2,
                                     EndingMilepost: 126.3,
+#pragma warning disable CS0618 // Type or member is obsolete
                                     EventStatus: EventStatus.Active,
+#pragma warning restore CS0618 // Type or member is obsolete
                                     TypesOfWork:
                                     [
                                         new TypeOfWork(WorkTypeName.Maintenance)
@@ -851,6 +855,7 @@ public class WzdxSerializerTests
                                         Description: "Single direction detour with lane-level information.",
                                         CreationDate: new DateTimeOffset(2024, 6, 17, 18, 0, 0, TimeSpan.Zero),
                                         UpdateDate: new DateTimeOffset(2024, 6, 18, 14, 37, 31, TimeSpan.Zero),
+#pragma warning disable CS0618 // Type or member is obsolete                                        
                                         Relationship: new Relationship(
                                             First: ["4fee99c9-e138-4a21-87ba-297ca22234ab"],
                                             Next: ["6db3aa76-8851-4e09-af28-cc81d58cd848"],
@@ -858,69 +863,15 @@ public class WzdxSerializerTests
                                             Children: ["8739c2c3-8f46-421c-843b-2464fc00bf0b"]
                                             )
                                         ),
+#pragma warning restore CS0618 // Type or member is obsolete                                    
                                     StartDate: new DateTimeOffset(2024, 6, 19, 7, 0, 0, TimeSpan.Zero),
                                     EndDate: new DateTimeOffset(2024, 6, 19, 19, 0, 0, TimeSpan.Zero),
-                                    VehicleImpact: VehicleImpact.SomeLanesClosed,
-                                    LocationMethod: LocationMethod.ChannelDeviceMethod,
                                     IsStartDateVerified: false,
                                     IsEndDateVerified: false,
-                                    IsStartPositionVerified: true,
-                                    IsEndPositionVerified: true,
-                                    Lanes:
-                                    [
-                                        new Lane(
-                                            Order: 1,
-                                            Type: LaneType.General,
-                                            Status: LaneStatus.Open,
-                                            Restrictions:
-                                            [
-                                                new Restriction(
-                                                    Type: RestrictionType.ReducedWidth,
-                                                    Value: 10,
-                                                    Unit: UnitOfMeasurement.Feet
-                                                    )
-                                            ]
-                                            ),
-                                        new Lane(
-                                            Order: 2,
-                                            Type: LaneType.General,
-                                            Status: LaneStatus.Closed
-                                            )
-                                    ],
                                     BeginningCrossStreet: "Main Street",
                                     EndingCrossStreet: "First Street",
                                     BeginningMilepost: 125.2,
-                                    EndingMilepost: 126.3,
-                                    TypesOfWork:
-                                    [
-                                        new TypeOfWork(WorkTypeName.Maintenance)
-                                    ],
-                                    WorkerPresence: new WorkerPresence(
-                                        AreWorkersPresent: false,
-                                        Definition:
-                                        [
-                                            WorkerPresenceDefinition.WorkersInWorkZoneWorking,
-                                            WorkerPresenceDefinition.WorkersInWorkZoneNotWorking
-                                        ],
-                                        Method: WorkerPresenceMethod.CameraMonitoring,
-                                        WorkerPresenceLastConfirmedDate: new DateTimeOffset(
-                                            2023, 6, 18, 14, 30, 25, TimeSpan.Zero
-                                            ),
-                                        Confidence: WorkerPresenceConfidence.High
-                                        ),
-                                    ReducedSpeedLimitKph: 88.514,
-                                    Restrictions:
-                                    [
-                                        new Restriction(RestrictionType.NoTrucks)
-                                    ],
-                                    ImpactedCdsCurbZones:
-                                    [
-                                        new CdsCurbZonesReference(
-                                            CdsCurbZoneIds: ["Zone Id 1", "Zone Id 2"],
-                                            CdsCurbsApiUrl: "API Url"
-                                            )
-                                    ],
-                                    WorkZoneType: WorkZoneType.Static
+                                    EndingMilepost: 126.3
                                     ),
                                 Geometry: new RoadEventFeatureGeometry(
                                     Type: RoadEventFeatureGeometryType.LineString,
@@ -1151,63 +1102,12 @@ public class WzdxSerializerTests
                                     },
                                     "start_date": "2024-06-19T07:00:00+00:00",
                                     "end_date": "2024-06-19T19:00:00+00:00",
-                                    "location_method": "channel-device-method",
-                                    "vehicle_impact": "some-lanes-closed",
                                     "is_start_date_verified": false,
                                     "is_end_date_verified": false,
-                                    "is_start_position_verified": true,
-                                    "is_end_position_verified": true,
-                                    "work_zone_type": "static",
-                                    "impacted_cds_curb_zones": [
-                                        {
-                                            "cds_curb_zone_ids": [ "Zone Id 1", "Zone Id 2" ],
-                                            "cds_curbs_api_url": "API Url"
-                                        }
-                                    ],
-                                    "lanes": [
-                                        {
-                                            "order": 1,
-                                            "type": "general",
-                                            "status": "open",
-                                            "restrictions": [
-                                                {
-                                                    "type": "reduced-width",
-                                                    "value": 10,
-                                                    "unit": "feet"
-                                                }
-                                            ]
-                                        },
-                                        {
-                                            "order": 2,
-                                            "type": "general",
-                                            "status": "closed"
-                                        }
-                                    ],
                                     "beginning_cross_street": "Main Street",
                                     "ending_cross_street": "First Street",
                                     "beginning_milepost": 125.2,
-                                    "ending_milepost": 126.3,
-                                    "types_of_work": [
-                                        {
-                                            "type_name": "maintenance" 
-                                        }
-                                    ],
-                                    "worker_presence": {
-                                        "are_workers_present": false,
-                                        "definition": [
-                                            "workers-in-work-zone-working",
-                                            "workers-in-work-zone-not-working"
-                                        ],
-                                        "method": "camera-monitoring",
-                                        "worker_presence_last_confirmed_date": "2023-06-18T14:30:25+00:00",
-                                        "confidence": "high"
-                                    },
-                                    "reduced_speed_limit_kph": 88.514,
-                                    "restrictions": [
-                                        {
-                                            "type": "no-trucks"
-                                        }
-                                    ]
+                                    "ending_milepost": 126.3
                                 },
                                 "geometry": {
                                     "type": "LineString",
