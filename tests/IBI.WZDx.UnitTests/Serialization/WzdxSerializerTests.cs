@@ -855,7 +855,7 @@ public class WzdxSerializerTests
                                         Description: "Single direction detour with lane-level information.",
                                         CreationDate: new DateTimeOffset(2024, 6, 17, 18, 0, 0, TimeSpan.Zero),
                                         UpdateDate: new DateTimeOffset(2024, 6, 18, 14, 37, 31, TimeSpan.Zero),
-#pragma warning disable CS0618 // Type or member is obsolete                                        
+#pragma warning disable CS0618 // Type or member is obsolete
                                         Relationship: new Relationship(
                                             First: ["4fee99c9-e138-4a21-87ba-297ca22234ab"],
                                             Next: ["6db3aa76-8851-4e09-af28-cc81d58cd848"],
@@ -863,7 +863,7 @@ public class WzdxSerializerTests
                                             Children: ["8739c2c3-8f46-421c-843b-2464fc00bf0b"]
                                             )
                                         ),
-#pragma warning restore CS0618 // Type or member is obsolete                                    
+#pragma warning restore CS0618 // Type or member is obsolete
                                     StartDate: new DateTimeOffset(2024, 6, 19, 7, 0, 0, TimeSpan.Zero),
                                     EndDate: new DateTimeOffset(2024, 6, 19, 19, 0, 0, TimeSpan.Zero),
                                     IsStartDateVerified: false,
@@ -871,7 +871,12 @@ public class WzdxSerializerTests
                                     BeginningCrossStreet: "Main Street",
                                     EndingCrossStreet: "First Street",
                                     BeginningMilepost: 125.2,
-                                    EndingMilepost: 126.3
+                                    EndingMilepost: 126.3,
+#pragma warning disable CS0618 // Type or member is obsolete
+                                    EventStatus: EventStatus.Active,
+                                    StartDateAccuracy: TimeVerification.Estimated,
+                                    EndDateAccuracy: TimeVerification.Estimated
+#pragma warning restore CS0618 // Type or member is obsolete
                                     ),
                                 Geometry: new RoadEventFeatureGeometry(
                                     Type: RoadEventFeatureGeometryType.LineString,
@@ -1107,7 +1112,10 @@ public class WzdxSerializerTests
                                     "beginning_cross_street": "Main Street",
                                     "ending_cross_street": "First Street",
                                     "beginning_milepost": 125.2,
-                                    "ending_milepost": 126.3
+                                    "ending_milepost": 126.3,
+                                    "event_status": "active",
+                                    "start_date_accuracy": "estimated",
+                                    "end_date_accuracy": "estimated"
                                 },
                                 "geometry": {
                                     "type": "LineString",

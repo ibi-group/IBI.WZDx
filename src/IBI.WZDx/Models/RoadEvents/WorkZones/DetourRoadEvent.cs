@@ -35,6 +35,15 @@ namespace IBI.WZDx.Models.RoadEvents.WorkZones;
 /// <param name="EndingMilepost">
 /// The linear distance measured against a milepost marker along a roadway where the event ends.
 /// </param>
+/// <param name="EventStatus">
+/// The status of the event.
+/// </param>
+/// <param name="StartDateAccuracy">
+/// A measure of how accurate the start date-time is.
+/// </param>
+/// <param name="EndDateAccuracy">
+/// A measure of how accurate the end date-time is.
+/// </param>
 public record DetourRoadEvent(
     RoadEventCoreDetails CoreDetails,
     DateTimeOffset StartDate,
@@ -44,7 +53,13 @@ public record DetourRoadEvent(
     string? BeginningCrossStreet = null,
     string? EndingCrossStreet = null,
     double? BeginningMilepost = null,
-    double? EndingMilepost = null
+    double? EndingMilepost = null,
+#pragma warning disable CS0618 // Type or member is obsolete
+    [property: Obsolete("Determine an event's status based on the dates and verification properties.")] 
+        EventStatus? EventStatus = null,
+    [property: Obsolete("Use IsStartDateVerified instead.")]TimeVerification? StartDateAccuracy = null,
+    [property: Obsolete("Use IsEndDateVerified instead.")]TimeVerification? EndDateAccuracy = null
+#pragma warning restore CS0618 // Type or member is obsolete
     ) : IRoadEvent
 {
     /// <summary>
@@ -61,7 +76,12 @@ public record DetourRoadEvent(
             && BeginningCrossStreet == other.BeginningCrossStreet
             && EndingCrossStreet == other.EndingCrossStreet
             && BeginningMilepost.NullEqualsApproximation(other.BeginningMilepost)
-            && EndingMilepost.NullEqualsApproximation(other.EndingMilepost);
+            && EndingMilepost.NullEqualsApproximation(other.EndingMilepost)
+#pragma warning disable CS0618 // Type or member is obsolete
+            && EventStatus == other.EventStatus
+            && StartDateAccuracy == other.StartDateAccuracy
+            && EndDateAccuracy == other.EndDateAccuracy;
+#pragma warning restore CS0618 // Type or member is obsolete
     }
 
     /// <inheritdoc/>
@@ -78,6 +98,11 @@ public record DetourRoadEvent(
         hash.Add(EndingCrossStreet);
         hash.Add(BeginningMilepost);
         hash.Add(EndingMilepost);
+#pragma warning disable CS0618 // Type or member is obsolete
+        hash.Add(EventStatus);
+        hash.Add(StartDateAccuracy);
+        hash.Add(EndDateAccuracy);
+#pragma warning restore CS0618 // Type or member is obsolete
 
         return hash.ToHashCode();
     }
