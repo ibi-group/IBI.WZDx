@@ -34,19 +34,18 @@ internal class RoadEventConverter : JsonConverter<IRoadEvent>
     /// </returns>
     public override IRoadEvent? Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
     {
-        using var jsonDocument = JsonDocument.ParseValue(ref reader);
-        var jsonObject = jsonDocument.RootElement.GetRawText();
-        var eventType = jsonDocument.RootElement.GetProperty("core_details")
+        using JsonDocument jsonDocument = JsonDocument.ParseValue(ref reader);
+        string jsonObject = jsonDocument.RootElement.GetRawText();
+        string? eventType = jsonDocument.RootElement.GetProperty("core_details")
             .GetProperty("event_type")
             .GetString();
 
-        Func<Type, IRoadEvent?> deserializeAsType = type =>
-            JsonSerializer.Deserialize(jsonObject, type, options) as IRoadEvent;
-
+        IRoadEvent? DeserializeAsType(Type type) => JsonSerializer.Deserialize(jsonObject, type, options) as IRoadEvent;
+        
         return eventType switch
         {
-            "work-zone" => deserializeAsType(typeof(WorkZoneRoadEvent)),
-            "detour" => null,
+            "work-zone" => DeserializeAsType(typeof(WorkZoneRoadEvent)),
+            "detour" => DeserializeAsType(typeof(DetourRoadEvent)),
             _ => throw new JsonException($"Unsupported event type '{eventType}'.")
         };
     }
@@ -60,12 +59,9 @@ internal class RoadEventConverter : JsonConverter<IRoadEvent>
     /// <param name="options">An object that specifies serialization options to use.</param>
     /// <exception cref="ArgumentNullException"><paramref name="value"/> cannot be null.</exception>
     public override void Write(Utf8JsonWriter writer, IRoadEvent value, JsonSerializerOptions options)
-    {   
-        if (value == null)
-            throw new ArgumentNullException("value");
-
-        var type = value.GetType();
-
+    {
+        ArgumentNullException.ThrowIfNull(value);
+        Type type = value.GetType();
         JsonSerializer.Serialize(writer, value, type, options);
     }
 }

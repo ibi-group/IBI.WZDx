@@ -57,11 +57,13 @@ public record RoadEventCoreDetails(
     string? Description = null,
     DateTimeOffset? CreationDate = null,
     DateTimeOffset? UpdateDate = null,
+#pragma warning disable CS0618 // Type or member is obsolete
     [property: Obsolete("Use RelatedRoadEvents instead.")]Relationship? Relationship = null
+#pragma warning restore CS0618 // Type or member is obsolete
     )
 {
     /// <summary>
-    /// Determine if an other <see cref="RoadEventCoreDetails"/> is equal to this <see cref="RoadEventCoreDetails"/>.
+    /// Determine if another <see cref="RoadEventCoreDetails"/> is equal to this <see cref="RoadEventCoreDetails"/>.
     /// </summary>
     public virtual bool Equals(RoadEventCoreDetails? other)
     {
@@ -75,7 +77,9 @@ public record RoadEventCoreDetails(
             && Description == other.Description
             && CreationDate == other.CreationDate
             && UpdateDate == other.UpdateDate
+#pragma warning disable CS0618 // Type or member is obsolete
             && Relationship == other.Relationship;
+#pragma warning restore CS0618 // Type or member is obsolete        
     }
 
     /// <inheritdoc/>
@@ -105,7 +109,9 @@ public record RoadEventCoreDetails(
         hash.Add(Description);
         hash.Add(CreationDate);
         hash.Add(UpdateDate);
+#pragma warning disable CS0618 // Type or member is obsolete        
         hash.Add(Relationship);
+#pragma warning restore CS0618 // Type or member is obsolete        
 
         return hash.ToHashCode();
     }
