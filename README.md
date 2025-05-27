@@ -1,10 +1,10 @@
 # WZDx .NET Library
 
-This repository contains the source code for IBI Group's [.NET 6.0](https://docs.microsoft.com/en-us/dotnet/core/whats-new/dotnet-6) [WZDx (Work Zone Data Exchange)](https://github.com/usdot-jpo-ode/wzdx) class library, `IBI.WZDx`.
+This repository contains the source code for IBI Group's [.NET 9.0](https://learn.microsoft.com/en-us/dotnet/core/whats-new/dotnet-9/overview) [WZDx (Work Zone Data Exchange)](https://github.com/usdot-jpo-ode/wzdx) class library, `IBI.WZDx`.
 
 ## About
 
-The `IBI.WZDx` class library provides models and utitlies for producing and consuming [Work Zone Data Exchange (WZDx)](https://github.com/usdot-jpo-ode/wzdx) data feeds.
+The `IBI.WZDx` class library provides models and utilities for producing and consuming [Work Zone Data Exchange (WZDx)](https://github.com/usdot-jpo-ode/wzdx) data feeds.
 
 The library provides the following functionality:
 
@@ -15,8 +15,6 @@ The library provides the following functionality:
 ### WZDx Version Support
 
 WZDx versions 4.0, 4.1, and 4.2 are supported; the [WzdxSerializer](./src/IBI.WZDx/Serialization/WzdxSerializer.cs) defaults to outputting v4.2 (latest WZDx).
-
-[Detour road events](https://github.com/usdot-jpo-ode/wzdx/blob/main/spec-content/objects/DetourRoadEvent.md) are not supported. When provided with a Work Zone Feed that includes detour road events, the WzdxSerializer.DeserializeFeed method will deserialize the detour events into a [RoadEventFeature](./src/IBI.WZDx/Models/RoadEvents/RoadEventFeature.cs) with `Properties` as `null`.
 
 ## Usage
 
@@ -71,7 +69,7 @@ The PATCH version number is incremented as changes are made to the library that 
 
 ## Tests
 
-This solution includes a [IBI.WZDx.UnitTests](/tests/IBI.WZDx.UnitTests/) Xunit test project. Run all unit tests with the following command:
+This solution includes a [IBI.WZDx.UnitTests](tests/IBI.WZDx.UnitTests) Xunit test project. Run all unit tests with the following command:
 
 ```
 dotnet test
