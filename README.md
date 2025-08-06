@@ -61,11 +61,11 @@ DeviceFeed wzdxDeviceFeed = WzdxSerializer.DeserializeFeed<DeviceFeed>(wzdxDevic
 
 ## Versioning 
 
-The package uses [Semantic Versioning](https://semver.org/) in a MAJOR.MINOR.PATCH format.
+The package is versioned in a X.Y.Z format.
 
-The MAJOR and MINOR version numbers correspond to the MAJOR and MINOR version numbers of the [WZDx specification](https://github.com/usdot-jpo-ode/wzdx) that it conforms to.
+The X and Y version numbers correspond to the MAJOR and MINOR version numbers of the [WZDx specification](https://github.com/usdot-jpo-ode/wzdx) that it conforms to.
 
-The PATCH version number is incremented as changes are made to the library that are unrelated to progress of WZDx.
+The Z version number is incremented as changes are made to the library that are unrelated to progress of WZDx. It does not use Semantic Versioning. An increment of Z could be a breaking change.
 
 ## Tests
 
@@ -74,3 +74,4 @@ This solution includes a [IBI.WZDx.UnitTests](tests/IBI.WZDx.UnitTests) Xunit te
 ```
 dotnet test
 ```
+
