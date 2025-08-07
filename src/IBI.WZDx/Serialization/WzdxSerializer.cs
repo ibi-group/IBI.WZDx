@@ -17,7 +17,6 @@ public static class WzdxSerializer
     {
         DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull,
         PropertyNamingPolicy = new SnakeCaseNamingPolicy(),
-        WriteIndented = true,
         Converters =
         {
             // System.Text.Json JsonStringEnumConverter does not use naming policy on
